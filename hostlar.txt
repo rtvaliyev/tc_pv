@@ -1,0 +1,9 @@
+DS-0001,192.168.10.10,48portluqhuawei
+
+DS-0002,192.168.20.20,64portluqhuawei
+
+DS-0003,192.168.30.30,iskrateladsl
+
+DS-0004,192.168.40.40,iskratelvdsl
+
+DS-0005,192.168.50.50,iskratelvdsl32

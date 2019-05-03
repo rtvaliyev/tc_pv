@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4>{{ aa }}</h4>
+                    {% if request.user.is_authenticated %}  
+                        <a href="{% url 'selena:selenadelete' %}" class="btn btn-primary" role="button">Sıfırla</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock%}

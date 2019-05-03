@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form method = "POST" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <p class="lead">Fiziki qoşulmanın yoxlanılması</p>
+                    {{ form|crispy }}
+                    <input class="btn btn-primary" type="submit" value="Göndər">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock%}
+
