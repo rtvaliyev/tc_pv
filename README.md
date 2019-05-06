@@ -11,7 +11,7 @@ Language of project is Azerbaijani.</br>
 
 Python version is 3.6</br>
 Used python libraries:</br>
--BeautifulSoup 4
+-BeautifulSoup 4</br>
 -requests</br>
 -time</br>
 -telnetlib</br>
