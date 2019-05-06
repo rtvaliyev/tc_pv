@@ -1,8 +1,8 @@
 # selena
 
-Simple website for checking and managing speed of ports dslams(or switches) using telnet automatically.
-Scenarry of sites is redirecting local user accounts(username and password) to dedicated(other) sites and scrape web infos as needed as and assign in the scripts that are.
-Language of project is Azerbaijani.
+Simple website for checking and managing speed of ports dslams(or switches) using telnet automatically.</br>
+Scenarry of sites is redirecting local user accounts(username and password) to dedicated(other) sites and scrape web infos as needed as and assign in the scripts that are.</br>
+Language of project is Azerbaijani.</br>
 
 Python version is 3.6</br>
 Used python libraries:</br>
