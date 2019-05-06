@@ -2,6 +2,7 @@
 Use this project in virtual environment of python(recommended).</br> 
 Simple website for checking and managing speed of ports dslams(or switches) using telnet automatically.</br>
 Scenarry of sites is redirecting local user accounts(username and password) to dedicated(other) sites and scrape web infos as needed as and assign in the scripts that are.</br>
+In admin page you can create 'Texnik' and 'Operator' group to separate scennaries.</br>
 DSLAMs:</br>
 -Huawei MA5303</br>
 -Huawei MA5603</br>
