@@ -1,4 +1,4 @@
-# selena
+# Project Selena
 Use this project in virtual environment of python(recommended).</br> 
 Simple website for checking and managing speed of ports dslams(or switches) using telnet automatically.</br>
 Scenary of site is redirecting local user accounts(username and password) to dedicated(other) sites and scrape web infos as needed as and assign in the scripts that are.</br>
