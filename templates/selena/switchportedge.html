@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="thumbnail">
+                <div class="caption">
+                    <pre class="tab"><h5> Host adı        :       {{ dd }}</h5></pre>
+                    <pre class="tab"><h5>Portun Statusu   :       {{ bb }}({{ ee }})</h5></pre>
+                    <pre class="tab"><h5>MAC Adresi       :       {{ cc }}</h5></pre>
+                    {% if request.user.is_authenticated %}  
+                        <a href="{% url 'selena:selenareg' %}" class="btn btn-primary" role="button">Geri</a>
+                    {% else%}
+                        <a href="{% url 'selena:selenaunreg' %}" class="btn btn-primary" role="button">Geri</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock%}

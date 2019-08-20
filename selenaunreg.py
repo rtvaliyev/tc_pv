@@ -12,8 +12,8 @@ def tellet(ipdslam,ipplata,ipport):
                     dslam = row[1]
                     plata = ipplata
                     port = ipport
-                    user = "dslam login username"
-                    password = "dslam login pass"
+                    user = "admin"
+                    password = "admin"
                     tn = telnetlib.Telnet(dslam)
                     tn.read_until(b">>User name:")
                     tn.write(user.encode('ascii') + b"\n")
@@ -57,8 +57,8 @@ def tellet(ipdslam,ipplata,ipport):
                         dslam = row[1]
                         plata = ipplata
                         port = ipport
-                        user = "dslam login username"
-                        password = "dslam login pass"
+                        user = "admin"
+                        password = "admin"
                         tn = telnetlib.Telnet(dslam)
                         tn.read_until(b"Username:")
                         tn.write(user.encode('ascii') + b"\n")
@@ -110,8 +110,8 @@ def tellet(ipdslam,ipplata,ipport):
                         dslam = row[1]
                         plata = ipplata
                         port = ipport
-                        user = "dslam login username"
-                        password = "dslam login pass"
+                        user = "admin"
+                        password = "admin"
                         tn = telnetlib.Telnet(dslam)
                         tn.read_until(b"user id :")
                         tn.write(user.encode('ascii') + b"\n")
@@ -148,8 +148,8 @@ def tellet(ipdslam,ipplata,ipport):
                         port = int(port)
                         if port<65 and port>0:
                             port = str(port)
-                        user = "dslam login username"
-                        password = "dslam login pass"
+                        user = "admin"
+                        password = "admin"
                         showdsl = "show dsl port current values 0/"
                         quiting = "quit\r"
                         nosaving = "n"
@@ -195,8 +195,8 @@ def tellet(ipdslam,ipplata,ipport):
                         port = int(port)
                         if port<33 and port>0:
                             port = str(port)
-                        user = "dslam login username"
-                        password = "dslam login pass"
+                        user = "admin"
+                        password = "admin"
                         showdsl = "show dsl port current values 0/"
                         quiting = "quit\r"
                         nosaving = "n"

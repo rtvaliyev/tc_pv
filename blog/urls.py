@@ -22,8 +22,10 @@ from selena.views import view_404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # url(r'^selena/', selena_view, name='selena'),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^selena/', include('selena.urls')),
     url(r'^$', home_view, name='home'),
-    url(r'^.*/$', view_404),
+    #path('', home_view)
+    url(r'^.*/$', view_404)
 ]

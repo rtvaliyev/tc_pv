@@ -19,6 +19,8 @@ def selena_view(request):
         u = User.objects.get(username__exact=username)
         password = u.password[8:]
         print ('  USER   : '+username)
+        client_address = request.META.get('REMOTE_ADDR')
+        print ('  IP     : '+client_address)
         number = form.cleaned_data.get('number')
         a=sr.sellet(username,password,number)
         if a is None:
@@ -57,7 +59,24 @@ def selena_view(request):
                 'ee':a[4][37:],
                 }
             messages.success(request, 'Fiziki Qoşulmada "SNR" Göstəriciləri Düzgün Olmaya Bilər! Baxın:"Maksimum Sürət"')
-            return render(request, 'selena/detail48active.html',context)
+            return render(request, 'selena/detail48active.html',context)  
+        if len(a)==4:
+            context = {
+                'aa':a[0][2:12],
+                'bb':a[0][12:28],
+                'cc':a[1][:16],
+                'dd':a[2][:-5],
+                }
+            return render(request, 'selena/switchport.html',context) 
+        if len(a)==7:
+            context = {
+                'aa':a[3],
+                'bb':a[0],
+                'cc':a[1],
+                'dd':a[2],
+                'ee':a[4],
+                }
+            return render(request, 'selena/switchportedge.html',context)
         else:
             context = {
                 'aa':a[0],
@@ -65,12 +84,18 @@ def selena_view(request):
             return render(request, 'selena/detailnodsl.html',context)
     return render(request, 'selena/form.html', {'form':form})
 
+
 def selena_view1(request): 
     form = SelenaForm1(request.POST or None)
     if form.is_valid():
         dslamip = form.cleaned_data.get('ipdslam')
         plataip = form.cleaned_data.get('ipplata')
         portip = form.cleaned_data.get('ipport')
+        client_address = request.META.get('REMOTE_ADDR')
+        print('  IP     : '+client_address)
+        print('  DSLAM  : '+dslamip)
+        print('  PLATA  : '+plataip)
+        print('  PORT   : '+portip)
         a=su.tellet(dslamip,plataip,portip)
         if a is None:
             return render(request, 'selena/err.html')
@@ -116,6 +141,7 @@ def selena_view1(request):
             return render(request, 'selena/detailnodsl.html',context)
     return render(request, 'selena/form.html', {'form':form})
 
+
 def selena_view2(request):
     if  not request.user.is_authenticated:
         return redirect('home')
@@ -130,6 +156,8 @@ def selena_view2(request):
             u = User.objects.get(username__exact=username)
             password = u.password[8:]
             print ('  USER   : '+username)
+            client_address = request.META.get('REMOTE_ADDR')
+            print('  IP     : '+client_address)
             number = form.cleaned_data.get('number')
             a=sg.gellet(username,password,number)
             if a is None:
@@ -145,7 +173,8 @@ def selena_view2(request):
                 return render(request, 'selena/detail64activespeed.html',context)
         return render(request, 'selena/formspeed.html', {'form':form})
     else:
-        return redirect('home')
+        return render(request, 'selena/restricting.html')
+
 
 def selena_save(request):
     if  not request.user.is_authenticated:
@@ -180,6 +209,8 @@ def selena_delete(request):
         return redirect('home')
     else:
         return redirect('home')
+
+
 
 def view_404(request):
     return redirect('home')

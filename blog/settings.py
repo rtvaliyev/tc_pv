@@ -25,7 +25,7 @@ SECRET_KEY = 'x@uae6d-bms%epg4lkppgqbpq*bz-9wfy=a^h-6hlf9ae$xu78'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',]
+ALLOWED_HOSTS = ['127.0.0.1','ubuntu',]
 
 
 # Application definition
@@ -123,11 +123,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/') # - for server
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 PASSWORD_HASHERS = ('djangosnippets_yetty.PlainTextPassword',)
 
+# PASSWORD_HASHERS = ('django.contrib.auth.hashers.UnsaltedMD5PasswordHasher',)
 
 # LOGGING = {
 #     'version': 1,

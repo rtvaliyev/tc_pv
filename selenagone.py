@@ -7,32 +7,52 @@ import csv
 
 def gellet(usernam,passwor,nomre):
 	s = requests.Session()
-	# Asagida POST melumatlari qeyd olunmalidir,misalcun:
 	data = {
 			'txtLogin':usernam,
 			'txtPwd':passwor,
 			'btnSubmit':'Submit'
 			}
-	login_request = s.post('billing-e login olmaq ucun link', data=data)
-	# Asagida POST melumatlari qeyd olunmalidir,misalcun:
+	login_request = s.post('http://www.youneededurl/', data=data)
 	data1 = {
 			'srchLogin':nomre,
 			}
-	req1 = s.post('nomresini sorgulamaq ucun link', data=data1)
+	req1 = s.post('http://www.youneededurl/', data=data1)
 	soup = BeautifulSoup(req1.text,'html.parser')
 	content = soup.find_all('a')
 	for links in content:
 		link = links['href']
 		if "view_user_info&id" in link:
-			userlink = 'nomrenin linki'+link
+			userlink = 'http://www.youneededurl/'+link
 			req2 = s.get(userlink)
 			soup1 = BeautifulSoup(req2.text,'html.parser')
-			ipdslam = soup1.find('td', text='DSLAM').find_next('td').text.strip()
-			ipplata = soup1.find('td', text='Plate').find_next('td').text.strip()
+			
+			try:
+				ipdslam = soup1.find('td', text='DSLAM').find_next('td').text.strip()
+			except AttributeError:
+				ipdslam = soup1.find('td', text='DSLam').find_next('td').text.strip()
+			
+			try:
+				ipplata = soup1.find('td', text='Plate').find_next('td').text.strip()
+			except AttributeError:
+				ipplata = soup1.find('td', text='Plata').find_next('td').text.strip()
+			
 			ipport = soup1.find('td', text='Port').find_next('td').text.strip()
-			sipport = soup1.find('td', text='Phone').find_next('td').text.strip()
-			ipTariff = soup1.find('td', text='Tariff').find_next('td').text.strip()
+			
+			try:
+				sipport = soup1.find('td', text='Phone').find_next('td').text.strip()
+			except AttributeError:
+				sipport = soup1.find('td', text='Telefon').find_next('td').text.strip()
+				
+			try:
+				ipTariff = soup1.find('td', text='Tariff').find_next('td').text.strip()
+			except AttributeError:
+				ipTariff = soup1.find('td', text='Tarif planı').find_next('td').text.strip()
 
+			print('  DSLAM  : '+ipdslam)
+			print('  PLATE  : '+ipplata)
+			print('  PORT   : '+ipport)
+			print('  PHONE  : '+sipport)
+			print('  TARIFF : '+ipTariff)
 			with open('hostlar.txt') as txt_file:
 				txt_reader = csv.reader(txt_file, delimiter=',')
 				for row in txt_reader:
@@ -45,8 +65,8 @@ def gellet(usernam,passwor,nomre):
 										with open('saved.txt', 'a') as output:
 											output.write(row[0]+','+row[1]+','+row[2]+'\n')
 										profayl=sp[1]
-										user = "dslam login username"
-										password = "dslam login pass"
+										user = "admin"
+										password = "admin"
 										tn = telnetlib.Telnet(row[1])
 										tn.read_until(b">>User name:")
 										tn.write(user.encode('ascii') + b"\n")
@@ -90,8 +110,8 @@ def gellet(usernam,passwor,nomre):
 											output.write(row[0]+','+row[1]+','+row[2]+'\n')
 										profayl=sp[1]
 										print(" ")
-										user = "dslam login username"
-										password = "dslam login pass"
+										user = "admin"
+										password = "admin"
 										tn = telnetlib.Telnet(row[1])
 										tn.read_until(b"Username:")
 										tn.write(user.encode('ascii') + b"\n")

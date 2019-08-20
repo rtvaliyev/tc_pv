@@ -1,1 +1,4 @@
-DSL - Unlimited - 1/1 Mb/san,11
+DSL - Unlimited - 1/1 Mb/san,60
+DSL - Unlimited - 2/1 Mb/san,61
+DSL - Unlimited - 3/1 Mb/san,62
+DSL - Unlimited - 6/1 Mb/san,63

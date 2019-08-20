@@ -16,8 +16,8 @@ def savellet():
 		save_reader = csv.reader(save_file, delimiter=',')
 		for row in save_reader:
 			if "64portluqhuawei"==row[2]:
-				user1 = "dslam login username"
-				password1 = "dslam login pass"
+				user1 = "admin"
+				password1 = "admin"
 				tn = telnetlib.Telnet(row[1])
 				tn.read_until(b">>User name:")
 				tn.write(user1.encode('ascii') + b"\n")
@@ -39,8 +39,8 @@ def savellet():
 					with open('resultselena.txt', 'a') as result:
 						result.write(dslam_adi2[:-1]+' '+success2[:-1]+ 'd successfully. || ' '\n')
 			if "48portluqhuawei"==row[2]:
-				user1 = "dslam login username"
-				password1 = "dslam login pass"
+				user1 = "admin"
+				password1 = "admin"
 				tn = telnetlib.Telnet(row[1])
 				tn.read_until(b"Username:")
 				tn.write(user1.encode('ascii') + b"\n")
@@ -70,10 +70,6 @@ def savellet():
 
 
 def delellet():
-	# with open('saved.txt', 'w') as emptylist:
-	# 	emptylist.write('')
-	# with open('resultselena.txt', 'w') as result:
-	# 	result.write('')
 	os.remove("resultselena.txt")
 	os.remove("saved.txt")
 	os.remove("noduplicate.txt")

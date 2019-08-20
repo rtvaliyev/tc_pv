@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=100, label='İstifadəçi adı')
     password = forms.CharField(max_length=100, label='Şifrə', widget=forms.PasswordInput)
+
     def clean(self):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
@@ -19,6 +20,7 @@ class RegisterForm(forms.ModelForm):
     username = forms.CharField(max_length=100, label='İstifadəçi adı')
     password1 = forms.CharField(max_length=100, label='Şifrə', widget=forms.PasswordInput)
     password2 = forms.CharField(max_length=100, label='Təkrar şifrə', widget=forms.PasswordInput)
+
     class Meta:
         model = User
         fields = [
@@ -26,6 +28,7 @@ class RegisterForm(forms.ModelForm):
             'password1',
             'password2',
         ]
+
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
